@@ -1,0 +1,944 @@
+/* =====================================================================
+   CM HAIR SHOP — Stylesheet
+   ---------------------------------------------------------------------
+   Approach   : Mobile-first, progressive enhancement.
+   Aesthetic  : Editorial / luxury / masculine. Warm-toned blacks with
+                a single antique-copper accent (#c9974a). Cormorant
+                Garamond serif (with italic) paired with Manrope sans.
+   Sections   : 1. Reset & tokens
+                2. Base
+                3. Utilities
+                4. Navigation
+                5. Buttons
+                6. Hero
+                7. Section heading (shared)
+                8. Services
+                9. Gallery (horizontal scroll)
+                10. Booking
+                11. Footer
+                12. Reduced-motion override
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. RESET & DESIGN TOKENS
+   --------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* ── Color palette (warm dark + copper accent) ─────────────────── */
+  --color-bg:           #0c0a09;   /* near-black with a warm undertone */
+  --color-bg-elev:      #15110e;   /* slightly elevated surface       */
+  --color-surface:      #1c1814;   /* cards / inset panels            */
+  --color-line:         #2a2520;   /* subtle borders / dividers       */
+  --color-text:         #f4ede0;   /* warm off-white                  */
+  --color-text-muted:   #8a8073;   /* secondary text                  */
+  --color-text-faded:   #5a5046;   /* tertiary / decorative text      */
+  --color-accent:       #c9974a;   /* antique copper / gold           */
+  --color-accent-soft:  #e0b366;   /* lighter accent for hover states */
+
+  /* ── Typography ────────────────────────────────────────────────── */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-body:    'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* ── Spacing scale (rem-based) ─────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* ── Misc tokens ───────────────────────────────────────────────── */
+  --max-width: 1280px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ---------------------------------------------------------------------
+   2. BASE STYLES
+   --------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;          /* native smooth scroll for anchor links */
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 80px;         /* offset anchors so they clear the nav */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Subtle ambient glow — gives the page warmth without an image */
+  background-image:
+    radial-gradient(circle at 0% 0%,   rgba(201, 151, 74, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(201, 151, 74, 0.04) 0%, transparent 50%);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+button {
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+ul { list-style: none; }
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+
+/* ---------------------------------------------------------------------
+   3. UTILITY CLASSES
+   --------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .container { padding: 0 var(--space-7); }
+}
+
+
+/* ---------------------------------------------------------------------
+   4. NAVIGATION
+   --------------------------------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: var(--space-4) 0;
+  transition:
+    background var(--transition),
+    backdrop-filter var(--transition),
+    padding var(--transition),
+    border-color var(--transition);
+  border-bottom: 1px solid transparent;
+}
+
+/* When user has scrolled past hero edge — applied via JS */
+.nav--scrolled {
+  background: rgba(12, 10, 9, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: var(--space-3) 0;
+  border-bottom-color: var(--color-line);
+}
+
+.nav__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .nav__inner { padding: 0 var(--space-7); }
+}
+
+/* Logo — italic serif monogram + spaced-out sans wordmark */
+.nav__logo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.nav__logo-mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  letter-spacing: 0.01em;
+}
+
+.nav__logo-text {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* Primary nav links — desktop only */
+.nav__links {
+  display: none;
+  gap: var(--space-6);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav__links a {
+  position: relative;
+  opacity: 0.78;
+  padding: var(--space-2) 0;
+}
+
+.nav__links a:hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+/* Animated underline on hover */
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width var(--transition);
+}
+
+.nav__links a:hover::after { width: 100%; }
+
+@media (min-width: 900px) {
+  .nav__links { display: flex; }
+}
+
+/* Persistent CTA in the nav */
+.nav__cta {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  transition: background var(--transition), color var(--transition);
+}
+
+.nav__cta:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* Tighter sizing on small phones */
+@media (max-width: 480px) {
+  .nav__cta {
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+  }
+  .nav__logo-mark { font-size: 1.35rem; }
+  .nav__logo-text { font-size: 0.7rem; letter-spacing: 0.18em; }
+}
+
+
+/* ---------------------------------------------------------------------
+   5. BUTTONS
+   --------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -10px rgba(201, 151, 74, 0.6);
+}
+
+.btn--primary i { transition: transform var(--transition); }
+.btn--primary:hover i { transform: translateX(4px); }
+
+.btn--ghost {
+  border-color: var(--color-line);
+  color: var(--color-text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+
+/* ---------------------------------------------------------------------
+   6. HERO
+   --------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;          /* small viewport height on mobile */
+  display: flex;
+  align-items: center;
+  padding: calc(var(--space-9) + 4rem) 0 var(--space-9);
+  overflow: hidden;
+}
+
+/* Darkened photographic backdrop */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://source.unsplash.com/1600x1200/?barbershop,interior,dark');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.45) contrast(1.05) brightness(0.9);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+/* Gradient overlay — fades to solid at the bottom for clean section seam */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 10, 9, 0.55) 0%,
+    rgba(12, 10, 9, 0.78) 60%,
+    rgba(12, 10, 9, 1)    100%
+  );
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .hero__content { padding: 0 var(--space-7); }
+}
+
+.hero__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-5);
+}
+
+/* Oversized fluid serif headline */
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+  max-width: 14ch;
+}
+
+.hero__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  max-width: 50ch;
+  margin-bottom: var(--space-7);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* Decorative scroll indicator (bottom-center) */
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--color-accent), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0%, 100% { transform: scaleY(1);   transform-origin: top; }
+  50%      { transform: scaleY(0.4); transform-origin: top; }
+}
+
+@media (max-width: 600px) {
+  .hero__scroll { display: none; }
+}
+
+
+/* ---------------------------------------------------------------------
+   7. SECTION HEAD (shared component)
+   --------------------------------------------------------------------- */
+.section-head {
+  margin-bottom: var(--space-8);
+  max-width: 720px;
+}
+
+.section-head--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-head__eyebrow {
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.section-head__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+
+.section-head__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+.section-head__lead {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+
+/* ---------------------------------------------------------------------
+   8. SERVICES
+   --------------------------------------------------------------------- */
+.services {
+  padding: var(--space-9) 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.services__list { display: flex; flex-direction: column; }
+
+.service {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--color-line);
+  transition: padding var(--transition);
+}
+
+.service:first-child { border-top: 1px solid var(--color-line); }
+
+/* Tiny editorial hover — row gently shifts right */
+.service:hover { padding-left: var(--space-3); }
+
+.service__num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-text-faded);
+  min-width: 2ch;
+}
+
+.service__body { min-width: 0; }
+
+.service__name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-2);
+}
+
+.service__desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.service__price {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+}
+
+/* On small screens, stack the price below the description */
+@media (max-width: 600px) {
+  .service {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--space-2) var(--space-4);
+  }
+  .service__num   { grid-row: 1 / span 2; align-self: start; padding-top: 0.3rem; }
+  .service__body  { grid-column: 2; grid-row: 1; }
+  .service__price { grid-column: 2; grid-row: 2; justify-self: start; }
+}
+
+
+/* ---------------------------------------------------------------------
+   9. GALLERY — Horizontal scroll-snap carousel
+   --------------------------------------------------------------------- */
+.gallery {
+  padding: var(--space-9) 0;
+  background: var(--color-bg-elev);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery__head-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-7);
+}
+
+.gallery__head-wrap .section-head { margin-bottom: 0; }
+
+/* Optional desktop arrow buttons (touch users use native swipe) */
+.gallery__controls {
+  display: none;
+  gap: var(--space-3);
+}
+
+@media (min-width: 900px) {
+  .gallery__controls { display: flex; }
+}
+
+.gallery__btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.gallery__btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(201, 151, 74, 0.08);
+  transform: translateY(-2px);
+}
+
+/*
+  THE SCROLL TRACK ─────────────────────────────────────────────────
+  • overflow-x: auto                  → enables horizontal scroll
+  • scroll-snap-type: x mandatory     → forces snapping to each card
+  • -webkit-overflow-scrolling: touch → momentum scrolling on iOS
+  • scrollbar hidden visually but the area remains scrollable
+  ───────────────────────────────────────────────────────────────── */
+.gallery__track {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-padding-left: var(--space-5);
+  padding: var(--space-3) var(--space-5) var(--space-5);
+  /* On larger screens, match the container's horizontal padding */
+}
+
+@media (min-width: 768px) {
+  .gallery__track {
+    padding: var(--space-3) var(--space-7) var(--space-5);
+    scroll-padding-left: var(--space-7);
+  }
+}
+
+/* Hide native scrollbar (cross-browser) */
+.gallery__track::-webkit-scrollbar { display: none; }
+.gallery__track {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* old Edge / IE  */
+}
+
+/* Visible focus ring for keyboard users */
+.gallery__track:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+/* Each gallery card */
+.gallery__item {
+  flex: 0 0 auto;
+  width: min(72vw, 320px);
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface);
+  transition: transform var(--transition);
+}
+
+@media (min-width: 768px) {
+  .gallery__item { width: 360px; }
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  filter: grayscale(0.2);
+  transition: filter var(--transition), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  .gallery__item img { height: 480px; }
+}
+
+.gallery__item:hover img {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+/* Caption — italic serif inside a fading dark gradient */
+.gallery__item figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: var(--space-6) var(--space-4) var(--space-4);
+  background: linear-gradient(180deg, transparent 0%, rgba(12, 10, 9, 0.92) 70%);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+.gallery__item figcaption::before {
+  content: '— ';
+  color: var(--color-accent);
+}
+
+
+/* ---------------------------------------------------------------------
+   10. BOOKING (Setmore embed slot)
+   --------------------------------------------------------------------- */
+.booking {
+  padding: var(--space-9) 0;
+  position: relative;
+}
+
+/* Hairline accent that draws the eye toward the booking form */
+.booking::before {
+  content: '';
+  position: absolute;
+  top: var(--space-7);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, var(--color-accent), transparent);
+  opacity: 0.6;
+}
+
+.setmore-container {
+  margin-top: var(--space-7);
+  min-height: 480px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  position: relative;
+}
+
+/* Decorative corner ticks — subtle premium detail */
+.setmore-container::before,
+.setmore-container::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-accent);
+}
+.setmore-container::before { top: -1px; left: -1px;  border-right: none; border-bottom: none; }
+.setmore-container::after  { bottom: -1px; right: -1px; border-left: none;  border-top: none; }
+
+/* Visual placeholder — remove once Setmore embed is in place */
+.setmore-placeholder {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
+
+.setmore-placeholder i {
+  display: block;
+  font-size: 3rem;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.setmore-placeholder p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.setmore-placeholder small {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+
+/* ---------------------------------------------------------------------
+   11. FOOTER
+   --------------------------------------------------------------------- */
+.footer {
+  background: var(--color-bg-elev);
+  border-top: 1px solid var(--color-line);
+  padding: var(--space-9) 0 var(--space-5);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+}
+
+@media (min-width: 600px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 900px) {
+  .footer__grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; }
+}
+
+.footer__logo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.footer__logo-mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.footer__logo-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.footer__tagline {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  max-width: 28ch;
+}
+
+.footer__title {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.footer__address {
+  font-style: normal;
+  line-height: 1.85;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.footer__address a {
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-line);
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.footer__address a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.footer__hours {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.footer__hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  border-bottom: 1px dashed var(--color-line);
+}
+
+.footer__hours li:last-child { border-bottom: none; }
+
+.footer__hours li span:last-child {
+  color: var(--color-text);
+  font-feature-settings: "tnum";    /* tabular numbers for clean alignment */
+}
+
+.footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.footer__socials a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.footer__socials a:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg);
+  transform: translateY(-3px);
+}
+
+/* Bottom strip — copyright + handcrafted credit */
+.footer__bottom {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-faded);
+}
+
+.footer__bottom i { color: var(--color-accent); }
+
+@media (min-width: 600px) {
+  .footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+
+/* ---------------------------------------------------------------------
+   12. ACCESSIBILITY — Honour reduced-motion preference
+   --------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

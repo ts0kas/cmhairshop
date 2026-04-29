@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CM HAIR SHOP — Premium κούρεμα, περιποίηση γενειάδας και styling για τον σύγχρονο άντρα στη Θεσσαλονίκη." />
+  <meta name="theme-color" content="#0c0a09" />
+  <title>CM HAIR SHOP — Premium Grooming &amp; Style</title>
+
+  <!-- Preconnect to Google Fonts CDN for faster font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!--
+    Typography stack (both fonts include Greek subsets):
+    - Cormorant Garamond → editorial display serif (with italic for emphasis)
+    - Manrope            → clean modern sans for body & UI
+  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- FontAwesome — used for social icons & micro-icons in CTAs -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ==================================================================
+       NAVIGATION
+       Fixed to the top. Transparent on hero, gains a blurred dark
+       background once the user scrolls (toggled with a tiny JS class).
+       ================================================================== -->
+  <nav class="nav" aria-label="Κύρια πλοήγηση">
+    <div class="nav__inner">
+      <!-- Logo: monogram "CM" in italic serif + spaced sans "HAIR SHOP" -->
+      <a href="#hero" class="nav__logo" aria-label="CM Hair Shop — Αρχική">
+        <span class="nav__logo-mark">CM</span>
+        <span class="nav__logo-text">Hair&nbsp;Shop</span>
+      </a>
+
+      <!-- Primary nav (hidden under 900px to keep mobile clean) -->
+      <ul class="nav__links">
+        <li><a href="#services">Υπηρεσίες</a></li>
+        <li><a href="#gallery">Στυλ</a></li>
+        <li><a href="#booking">Ραντεβού</a></li>
+        <li><a href="#contact">Επικοινωνία</a></li>
+      </ul>
+
+      <!-- Persistent CTA — always visible, always one tap from booking -->
+      <a href="#booking" class="nav__cta">Ραντεβού</a>
+    </div>
+  </nav>
+
+  <!-- ==================================================================
+       HERO
+       Full-viewport intro with darkened photo backdrop, eyebrow
+       label, oversized serif headline, supporting copy & dual CTAs.
+       ================================================================== -->
+  <header class="hero" id="hero">
+    <!-- Background image and gradient overlay are decorative -->
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Από το 2018 · Θεσσαλονίκη</p>
+
+      <h1 class="hero__title">
+        Premium <em>Κούρεμα</em><br />&amp; Στυλ
+      </h1>
+
+      <p class="hero__subtitle">
+        Η κλασική τέχνη του κουρέματος συναντά τη σύγχρονη αισθητική.
+        Στο CM&nbsp;Hair&nbsp;Shop, κάθε πελάτης φεύγει με την καλύτερη
+        εκδοχή του εαυτού του.
+      </p>
+
+      <div class="hero__actions">
+        <!-- Primary CTA — anchors to #booking; smooth scroll handled by CSS -->
+        <a href="#booking" class="btn btn--primary">
+          <span>Κλείστε Ραντεβού</span>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a href="#services" class="btn btn--ghost">Δείτε Υπηρεσίες</a>
+      </div>
+    </div>
+
+    <!-- Decorative scroll hint (hidden on small screens) -->
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </header>
+
+  <!-- ==================================================================
+       SERVICES
+       Editorial-style menu list with index numbers, descriptions,
+       and right-aligned prices. Hover slightly indents each row.
+       ================================================================== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__eyebrow">01 — Υπηρεσίες</p>
+        <h2 class="section-head__title">Ο τιμοκατάλογος <em>μας</em></h2>
+        <p class="section-head__lead">
+          Κάθε υπηρεσία περιλαμβάνει συμβουλευτική, ξέπλυμα και τελικό styling.
+        </p>
+      </div>
+
+      <ul class="services__list">
+        <li class="service">
+          <span class="service__num">01</span>
+          <div class="service__body">
+            <h3 class="service__name">Κούρεμα</h3>
+            <p class="service__desc">Κλασικό ή μοντέρνο κούρεμα προσαρμοσμένο στο σχήμα του προσώπου.</p>
+          </div>
+          <span class="service__price">€18</span>
+        </li>
+
+        <li class="service">
+          <span class="service__num">02</span>
+          <div class="service__body">
+            <h3 class="service__name">Περιποίηση Γενειάδας</h3>
+            <p class="service__desc">Σχηματισμός και styling με ψαλίδι και ξυράφι ακριβείας.</p>
+          </div>
+          <span class="service__price">€12</span>
+        </li>
+
+        <li class="service">
+          <span class="service__num">03</span>
+          <div class="service__body">
+            <h3 class="service__name">Ξύρισμα με Ζεστή Πετσέτα</h3>
+            <p class="service__desc">Παραδοσιακό ξύρισμα με ζεστές πετσέτες και premium προϊόντα.</p>
+          </div>
+          <span class="service__price">€20</span>
+        </li>
+
+        <li class="service">
+          <span class="service__num">04</span>
+          <div class="service__body">
+            <h3 class="service__name">Κούρεμα + Γενειάδα</h3>
+            <p class="service__desc">Ολοκληρωμένο πακέτο για πλήρη ανανέωση εμφάνισης.</p>
+          </div>
+          <span class="service__price">€25</span>
+        </li>
+
+        <li class="service">
+          <span class="service__num">05</span>
+          <div class="service__body">
+            <h3 class="service__name">Παιδικό Κούρεμα</h3>
+            <p class="service__desc">Για αγόρια έως 12 ετών, σε χαλαρό περιβάλλον.</p>
+          </div>
+          <span class="service__price">€12</span>
+        </li>
+
+        <li class="service">
+          <span class="service__num">06</span>
+          <div class="service__body">
+            <h3 class="service__name">Styling &amp; Φορμάρισμα</h3>
+            <p class="service__desc">Ολοκληρωμένο styling για ειδικές περιστάσεις και εκδηλώσεις.</p>
+          </div>
+          <span class="service__price">€10</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       GALLERY — HORIZONTAL SCROLL CAROUSEL
+       Pure-CSS scroll-snap track. Touch users get native momentum
+       swiping; desktop users also get optional prev/next buttons.
+       ================================================================== -->
+  <section class="gallery" id="gallery">
+    <div class="container gallery__head-wrap">
+      <div class="section-head">
+        <p class="section-head__eyebrow">02 — Τα Έργα Μας</p>
+        <h2 class="section-head__title">Στυλ που <em>μιλάνε</em></h2>
+        <p class="section-head__lead">Σύρετε για να δείτε περισσότερα →</p>
+      </div>
+
+      <!-- Optional desktop nav buttons (hidden on mobile - swipe handles it) -->
+      <div class="gallery__controls">
+        <button class="gallery__btn" data-dir="prev" aria-label="Προηγούμενη φωτογραφία" type="button">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button class="gallery__btn" data-dir="next" aria-label="Επόμενη φωτογραφία" type="button">
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!--
+      The horizontal scrolling track. Key CSS properties (see styles.css):
+      • overflow-x: auto                → enables horizontal scroll
+      • scroll-snap-type: x mandatory   → snaps each card into place
+      • -webkit-overflow-scrolling: touch → momentum scroll on iOS
+      • scrollbar hidden visually but still scrollable
+    -->
+    <div class="gallery__track" id="galleryTrack" tabindex="0" aria-label="Συλλογή στυλ — σύρετε αριστερά ή δεξιά">
+
+      <!-- Placeholder images via Unsplash source. Replace `sig=` with your own image URLs in production. -->
+      <figure class="gallery__item">
+        <img src="https://source.unsplash.com/400x500/?barber,haircut&sig=11" alt="Στυλ κουρέματος classic fade" loading="lazy" />
+        <figcaption>Classic Fade</figcaption>
+      </figure>
+
+      <figure class="gallery__item">
+        <img src="https://source.unsplash.com/400x500/?barbershop&sig=12" alt="Στυλ κουρέματος textured crop" loading="lazy" />
+        <figcaption>Textured Crop</figcaption>
+      </figure>
+
+      <figure class="gallery__item">
+        <img src="https://source.unsplash.com/400x500/?beard,grooming&sig=13" alt="Σχηματισμός γενειάδας" loading="lazy" />
+        <figcaption>Beard Sculpt</figcaption>
+      </figure>
+
+      <figure class="gallery__item">
+        <img src="https://source.unsplash.com/400x500/?mens,hair&sig=14" alt="Στυλ slick back" loading="lazy" />
+        <figcaption>Slick Back</figcaption>
+      </figure>
+
+      <figure class="gallery__item">
+        <img src="https://source.unsplash.com/400x500/?hairstyle,man&sig=15" alt="Modern pompadour" loading="lazy" />
+        <figcaption>Modern Pompadour</figcaption>
+      </figure>
+
+      <figure class="gallery__item">
+        <img src="https://source.unsplash.com/400x500/?barber,shop&sig=16" alt="Buzz cut στυλ" loading="lazy" />
+        <figcaption>Buzz Cut</figcaption>
+      </figure>
+
+      <figure class="gallery__item">
+        <img src="https://source.unsplash.com/400x500/?haircut,style&sig=17" alt="Side part στυλ" loading="lazy" />
+        <figcaption>Side Part</figcaption>
+      </figure>
+
+      <figure class="gallery__item">
+        <img src="https://source.unsplash.com/400x500/?grooming,man&sig=18" alt="Undercut στυλ" loading="lazy" />
+        <figcaption>Undercut</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       BOOKING — SETMORE EMBED SLOT
+       Empty centered container. Drop your Setmore embed code where
+       indicated below — it will render inside #setmore-container.
+       ================================================================== -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="section-head__eyebrow">03 — Ραντεβού</p>
+        <h2 class="section-head__title">Κλείστε <em>τη θέση σας</em></h2>
+        <p class="section-head__lead">
+          Επιλέξτε υπηρεσία, ημέρα και ώρα που σας βολεύουν. Άμεση επιβεβαίωση.
+        </p>
+      </div>
+
+      <!--
+        ╔══════════════════════════════════════════════════════════════╗
+        ║  SETMORE INTEGRATION POINT                                  ║
+        ║  Paste your Setmore embed <script> / iframe code INSIDE the ║
+        ║  #setmore-container div below. Remove the placeholder       ║
+        ║  markup once your embed is in place.                        ║
+        ╚══════════════════════════════════════════════════════════════╝
+      -->
+      <div id="setmore-container" class="setmore-container">
+        <!-- ⬇️  PASTE YOUR SETMORE EMBED CODE HERE  ⬇️ -->
+        <!-- ⬆️  PASTE YOUR SETMORE EMBED CODE HERE  ⬆️ -->
+
+        <!-- Visual placeholder — DELETE this block once Setmore is embedded -->
+        <div class="setmore-placeholder" aria-hidden="true">
+          <i class="fa-regular fa-calendar-check"></i>
+          <p>Φόρμα Κράτησης Setmore</p>
+          <small>Τοποθετήστε εδώ τον κώδικα ενσωμάτωσης</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       FOOTER
+       Brand mark, address, opening hours, social icons.
+       ================================================================== -->
+  <footer class="footer" id="contact">
+    <div class="container footer__grid">
+
+      <!-- Brand column -->
+      <div class="footer__col footer__col--brand">
+        <div class="footer__logo">
+          <span class="footer__logo-mark">CM</span>
+          <span class="footer__logo-text">Hair&nbsp;Shop</span>
+        </div>
+        <p class="footer__tagline">
+          <em>“Ένα καλό κούρεμα είναι στάση ζωής.”</em>
+        </p>
+      </div>
+
+      <!-- Address column -->
+      <div class="footer__col">
+        <h4 class="footer__title">Διεύθυνση</h4>
+        <address class="footer__address">
+          Τσιμισκή 78<br />
+          54622 · Θεσσαλονίκη<br />
+          Ελλάδα<br />
+          <a href="tel:+302310000000">+30 2310 000 000</a>
+        </address>
+      </div>
+
+      <!-- Hours column -->
+      <div class="footer__col">
+        <h4 class="footer__title">Ώρες Λειτουργίας</h4>
+        <ul class="footer__hours">
+          <li><span>Δευ — Παρ</span><span>09:00 — 21:00</span></li>
+          <li><span>Σάββατο</span><span>09:00 — 18:00</span></li>
+          <li><span>Κυριακή</span><span>Κλειστά</span></li>
+        </ul>
+      </div>
+
+      <!-- Socials column -->
+      <div class="footer__col">
+        <h4 class="footer__title">Ακολουθήστε</h4>
+        <ul class="footer__socials">
+          <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom container">
+      <p>© <span id="year">2026</span> CM Hair Shop · Όλα τα δικαιώματα διατηρούνται.</p>
+      <p>Φτιαγμένο με <i class="fa-solid fa-scissors" aria-hidden="true"></i> στην Ελλάδα</p>
+    </div>
+  </footer>
+
+  <!-- ==================================================================
+       MINIMAL VANILLA JS
+       1. Auto-update copyright year
+       2. Scroll-state class on the navbar (for blur background)
+       3. Prev/next gallery buttons (desktop convenience —
+          touch users use native CSS scroll-snap, which needs no JS)
+       ================================================================== -->
+  <script>
+    // 1) Auto-update copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 2) Toggle a class on the navbar after the user scrolls past the hero edge.
+    //    This lets us swap from transparent to a blurred dark background.
+    (function () {
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
+      const onScroll = () => {
+        nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // 3) Gallery prev/next buttons. Native scroll-snap handles snapping;
+    //    these buttons just programmatically scroll the track by one card.
+    (function () {
+      const track = document.getElementById('galleryTrack');
+      const buttons = document.querySelectorAll('.gallery__btn');
+      if (!track || !buttons.length) return;
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const dir = btn.dataset.dir === 'next' ? 1 : -1;
+          const card = track.querySelector('.gallery__item');
+          if (!card) return;
+          // Card width + 24px gap from CSS = exact step
+          const step = card.getBoundingClientRect().width + 24;
+          track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
