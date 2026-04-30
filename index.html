@@ -10,24 +10,28 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
+ 
 <nav id="navbar">
   <a href="#hero" class="nav-logo">Chris Matoudis<span>Haircut Stylist</span></a>
   <ul class="nav-links">
     <li><a href="#hero">Αρχική</a></li>
     <li><a href="#booking">Ραντεβού</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Κριτικές</a></li>
+    <li><a href="#contact">Επικοινωνία</a></li>
   </ul>
   <div class="barber-pole" aria-hidden="true"><div class="barber-pole-inner"></div></div>
   <button class="hamburger" id="hamburgerBtn" aria-label="Μενού"><span></span><span></span><span></span></button>
 </nav>
-
+ 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#hero" onclick="closeMobile()">Αρχική</a>
   <a href="#booking" onclick="closeMobile()">Ραντεβού</a>
   <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#reviews" onclick="closeMobile()">Κριτικές</a>
+  <a href="#contact" onclick="closeMobile()">Επικοινωνία</a>
 </div>
-
+ 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg" id="heroBg"></div>
@@ -42,7 +46,7 @@
   </div>
   <div class="scroll-cue"><p>Scroll</p><div class="scroll-arrow"></div></div>
 </section>
-
+ 
 <!-- STATS -->
 <section id="why">
   <div class="why-grid reveal">
@@ -52,7 +56,7 @@
     <div class="why-stat"><span class="why-number">5★</span><span class="why-label">Αξιολόγηση</span></div>
   </div>
 </section>
-
+ 
 <!-- BOOKING -->
 <section id="booking">
   <div class="booking-bg" id="bookingBg"></div>
@@ -68,7 +72,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- GALLERY -->
 <section id="gallery">
   <div class="section-header reveal">
@@ -91,21 +95,225 @@
     </div>
   </div>
 </section>
-
+ 
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-header reveal">
+    <span class="section-label">✦ Google Reviews · 197 Κριτικές</span>
+    <h2 class="section-title">Τι Λένε οι Πελάτες</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="reviews-rating reveal">
+    <span class="rating-big">5.0</span>
+    <div class="rating-stars">★★★★★</div>
+    <span class="rating-count">Βασισμένο σε 197 κριτικές Google</span>
+  </div>
+  <div class="reviews-track-wrap reveal">
+    <div class="reviews-track">
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΚΚ</div>
+          <div class="review-meta">
+            <div class="review-name">Konstantinos Kalofolias</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 2 μήνες</span>
+        </div>
+        <p class="review-text">Εξαιρετικός επαγγελματίας ο Χρήστος και το κομμωτήριό του έχει πολύ ωραία ενέργεια. Είναι ένας χώρος που αισθάνεσαι ότι σε σέβονται. Κάθε φορά δικαιώνει την επιλογή μου να κουρεύομαι σε αυτόν.</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΑΜ</div>
+          <div class="review-meta">
+            <div class="review-name">Αναστασία Μαλινόβσκα</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 6 μήνες</span>
+        </div>
+        <p class="review-text">Πήγα τον γιο μου για κούρεμα και μείναμε κατενθουσιασμένοι! Ο Χρήστος ήταν εξαιρετικά ευγενικός και υπομονετικός, έκανε το παιδί να νιώσει άνετα από την πρώτη στιγμή. Σίγουρα θα ξαναπάμε, το προτείνω ανεπιφύλακτα!</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΠΒ</div>
+          <div class="review-meta">
+            <div class="review-name">Panagiota Batsara</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 2 μήνες</span>
+        </div>
+        <p class="review-text">Εξαιρετικός! Ξέρει την τέχνη πάρα πολύ καλά! Ο γιος μου ενθουσιασμένος με το κούρεμα κάθε φορά που φεύγουμε από τον Χρήστο! Δεν τον αλλάζει!</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΜΜ</div>
+          <div class="review-meta">
+            <div class="review-name">Marios Molla</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 4 μήνες</span>
+        </div>
+        <p class="review-text">Ο Χρήστος έχει εξαιρετική αντίληψη της τέχνης του και εξατομικευμένη προσέγγιση. Απίστευτη δουλειά, έχει κερδίσει κάθε ένα από τα αστέρια.</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΑΜ</div>
+          <div class="review-meta">
+            <div class="review-name">Αννίτα Μητροπούλου</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 6 μήνες</span>
+        </div>
+        <p class="review-text">Επαγγελματίας, ευγενικός, καθαριότητα — άψογα! Κατάφερε άρτιο αποτέλεσμα σε δύσκολο κεφάλι. Μπράβο! Θα είσαι ο αγαπημένος μας «κουρευτής» όπως λέει κι ο γιος μου!</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΔΚ</div>
+          <div class="review-meta">
+            <div class="review-name">Dimitris Koutroubas</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 5 μήνες</span>
+        </div>
+        <p class="review-text">Φοβερός επαγγελματίας ο Χρήστος, καταλαβαίνει κατευθείαν τι θέλεις και το κάνει ακόμα καλύτερο από ότι το φαντάζεσαι.</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΔΣ</div>
+          <div class="review-meta">
+            <div class="review-name">Dimitris Saridis</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 6 μήνες</span>
+        </div>
+        <p class="review-text">Ο τύπος είναι φοβερός, ασχολείται μαζί σου για να βγει καλό αποτέλεσμα, είναι πολύ καθαρά. Απλά είναι τέλειος.</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΑΚ</div>
+          <div class="review-meta">
+            <div class="review-name">Alexandros Kritsotakis</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 8 μήνες</span>
+        </div>
+        <p class="review-text">Όταν κουρεύομαι στον Χρήστο καταλαβαίνω τι σημαίνει κούρεμα. Κάνει ακριβώς αυτό που έχω στο μυαλό μου. Επαγγελματίας μα ακόμα περισσότερο ένας πολύ ευγενικός άνθρωπος!</p>
+      </div>
+ 
+      <!-- Duplicate cards for seamless loop -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΚΚ</div>
+          <div class="review-meta">
+            <div class="review-name">Konstantinos Kalofolias</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 2 μήνες</span>
+        </div>
+        <p class="review-text">Εξαιρετικός επαγγελματίας ο Χρήστος και το κομμωτήριό του έχει πολύ ωραία ενέργεια. Είναι ένας χώρος που αισθάνεσαι ότι σε σέβονται.</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΑΜ</div>
+          <div class="review-meta">
+            <div class="review-name">Αναστασία Μαλινόβσκα</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 6 μήνες</span>
+        </div>
+        <p class="review-text">Πήγα τον γιο μου για κούρεμα και μείναμε κατενθουσιασμένοι! Ο Χρήστος ήταν εξαιρετικά ευγενικός και υπομονετικός. Σίγουρα θα ξαναπάμε!</p>
+      </div>
+ 
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">ΜΜ</div>
+          <div class="review-meta">
+            <div class="review-name">Marios Molla</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <span class="review-date">πριν από 4 μήνες</span>
+        </div>
+        <p class="review-text">Ο Χρήστος έχει εξαιρετική αντίληψη της τέχνης του και εξατομικευμένη προσέγγιση. Απίστευτη δουλειά, έχει κερδίσει κάθε ένα από τα αστέρια.</p>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-label">✦ Βρείτε μας</span>
+    <h2 class="section-title">Επικοινωνία</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-grid reveal">
+ 
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div class="contact-label">Διεύθυνση</div>
+      <div class="contact-value">Νηλέως 7<br/>Καλύβια Θορικού 190 10</div>
+      <a href="https://maps.google.com/?q=Νηλέως+7,+Καλύβια+Θορικού" target="_blank" rel="noopener" class="contact-link">Άνοιγμα στον Χάρτη →</a>
+    </div>
+ 
+    <div class="contact-card">
+      <div class="contact-icon">📞</div>
+      <div class="contact-label">Τηλέφωνο</div>
+      <div class="contact-value">2291 022 083</div>
+      <a href="tel:+302291022083" class="contact-link">Κάλεσε τώρα →</a>
+    </div>
+ 
+    <div class="contact-card">
+      <div class="contact-icon">🕐</div>
+      <div class="contact-label">Ώρες Λειτουργίας</div>
+      <div class="contact-value contact-hours">
+        <span>Δευ – Παρ <em>09:00 – 20:00</em></span>
+        <span>Σάββατο <em>09:00 – 17:00</em></span>
+        <span>Κυριακή <em>Κλειστά</em></span>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="map-wrapper reveal">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.5!2d23.9!3d37.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sΝηλέως+7%2C+Καλύβια+Θορικού!5e0!3m2!1sel!2sgr!4v1"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Χάρτης Chris Matoudis Haircut Stylist">
+    </iframe>
+  </div>
+</section>
+ 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Chris Matoudis</div>
   <div class="footer-tagline">Haircut Stylist</div>
   <div class="footer-divider"></div>
+  <div class="footer-contact-row">
+    <a href="tel:+302291022083">📞 2291 022 083</a>
+    <span>·</span>
+    <a href="https://maps.google.com/?q=Νηλέως+7,+Καλύβια+Θορικού" target="_blank" rel="noopener">📍 Νηλέως 7, Καλύβια Θορικού</a>
+  </div>
+  <div class="footer-divider"></div>
   <p class="footer-copy">&copy; 2025 Chris Matoudis Haircut Stylist. Όλα τα δικαιώματα διατηρούνται.</p>
 </footer>
-
+ 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" aria-label="Κλείσιμο">&times;</button>
   <img id="lightboxImg" src="" alt="Μεγέθυνση φωτογραφίας"/>
 </div>
-
+ 
 <script src="script.js"></script>
 </body>
 </html>
