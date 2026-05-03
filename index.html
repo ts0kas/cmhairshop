@@ -50,12 +50,44 @@
 <!-- STATS -->
 <section id="why">
   <div class="why-grid reveal">
-    <div class="why-stat"><span class="why-number">10+</span><span class="why-label">Χρόνια Εμπειρίας</span></div>
-    <div class="why-stat"><span class="why-number">500+</span><span class="why-label">Ικανοποιημένοι Πελάτες</span></div>
-    <div class="why-stat"><span class="why-number">100%</span><span class="why-label">Premium Προϊόντα</span></div>
-    <div class="why-stat"><span class="why-number">5★</span><span class="why-label">Αξιολόγηση</span></div>
+    <div class="why-stat"><span class="why-number" data-target="10" data-suffix="+">0+</span><span class="why-label">Χρόνια Εμπειρίας</span></div>
+    <div class="why-stat"><span class="why-number" data-target="500" data-suffix="+">0+</span><span class="why-label">Ικανοποιημένοι Πελάτες</span></div>
+    <div class="why-stat"><span class="why-number" data-target="100" data-suffix="%">0%</span><span class="why-label">Premium Προϊόντα</span></div>
+    <div class="why-stat"><span class="why-number" data-target="5" data-suffix="★">0★</span><span class="why-label">Αξιολόγηση</span></div>
   </div>
 </section>
+
+<script>
+(function() {
+  var animated = false;
+  function runCountUp() {
+    if (animated) return;
+    var section = document.getElementById('why');
+    if (!section) return;
+    var rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      animated = true;
+      var els = document.querySelectorAll('.why-number');
+      els.forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-target'));
+        var suffix = el.getAttribute('data-suffix');
+        var duration = 1800;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  }
+  window.addEventListener('scroll', runCountUp, { passive: true });
+  window.addEventListener('load', runCountUp);
+})();
+</script>
 
 <!-- BOOKING -->
 <section id="booking">
